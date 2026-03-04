@@ -1,7 +1,7 @@
 export type SiteConfig = typeof siteConfig;
 
 export const siteConfig = {
-  name: "MemoWell",
+  name: "MemoWell - 创意社交平台",
   description: "一个由无数便签和照片编织而成的社区。在这里，您可以随时记录灵光一闪的想法，也能轻松分享生活中的动人瞬间。",
   navItems: [
     {
