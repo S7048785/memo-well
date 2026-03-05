@@ -1,42 +1,46 @@
 package com.yyjy.memo.models
 
-import org.babyfish.jimmer.sql.Entity
-import org.babyfish.jimmer.sql.Id
-import org.babyfish.jimmer.sql.GeneratedValue
-import org.babyfish.jimmer.sql.Key
-import org.babyfish.jimmer.sql.GenerationType
+import org.babyfish.jimmer.sql.*
 import java.time.LocalDateTime
 
 /**
-* Entity for table "comments"
-*/
-    @Entity
+ * Entity for table "comments"
+ */
+@Entity
 interface Comments {
 
     @Id
-    @GeneratedValue(            strategy = GenerationType.IDENTITY
-)
-    val id: long
+    @GeneratedValue(
+        strategy = GenerationType.IDENTITY
+    )
+    val id: Long
 
-        /**
-        * 所属帖子ID
-        */
+
+    /**
+     * 所属帖子ID
+     */
     @Key
-    val postId: Long
+    @ManyToOne
+    val post: Posts
 
-        /**
-        * 评论者ID
-        */
-    val userId: Long
+    /**
+     * 评论者ID
+     */
+    @ManyToOne
+    val user: Users
 
-        /**
-        * 父评论ID（用于回复功能）
-        */
-    val parentId: Long?
+    /**
+     * 父评论ID（用于回复功能）
+     */
+    @ManyToOne
+    val parent: Comments?
 
-        /**
-        * 评论内容
-        */
+    @OneToMany(mappedBy = "parent")
+    val children: List<Comments>
+
+    /**
+     * 评论内容
+     */
     val content: String
 
     val createdAt: LocalDateTime?

@@ -5,24 +5,29 @@ import org.babyfish.jimmer.sql.Id
 import org.babyfish.jimmer.sql.GeneratedValue
 import org.babyfish.jimmer.sql.Key
 import org.babyfish.jimmer.sql.GenerationType
+import org.babyfish.jimmer.sql.ManyToOne
 import java.time.LocalDateTime
 
 /**
-* Entity for table "likes"
-*/
-    @Entity
+ * Entity for table "likes"
+ */
+@Entity
 interface Likes {
 
     @Id
-    @GeneratedValue(            strategy = GenerationType.IDENTITY
-)
-    val id: long
+    @GeneratedValue(
+        strategy = GenerationType.IDENTITY
+    )
+    val id: Long
+
 
     @Key
-    val userId: Long
+    @ManyToOne
+    val user: Users
 
     @Key
-    val postId: Long
+    @ManyToOne
+    val post: Posts
 
     val createdAt: LocalDateTime?
 }

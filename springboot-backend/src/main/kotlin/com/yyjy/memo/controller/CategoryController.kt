@@ -5,7 +5,7 @@ import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RestController
 
 @Tag(name = "便签分类模块")
-@RequestMapping("auth")
+@RequestMapping("categories")
 @RestController
-class CategoriesController {
+class CategoryController {
 }

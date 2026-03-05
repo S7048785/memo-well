@@ -1,4 +1,7 @@
 package com.yyjy.memo.repository
 
-interface CommentRepository {
+import com.yyjy.memo.models.Comments
+import org.babyfish.jimmer.spring.repository.KRepository
+
+interface CommentRepository : KRepository<Comments, Long> {
 }
