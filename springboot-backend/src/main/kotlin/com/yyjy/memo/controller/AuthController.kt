@@ -1,5 +1,6 @@
 package com.yyjy.memo.controller
 
+import com.yyjy.memo.service.AuthService
 import io.swagger.v3.oas.annotations.tags.Tag
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RestController
@@ -7,5 +8,7 @@ import org.springframework.web.bind.annotation.RestController
 @Tag(name = "权限模块")
 @RequestMapping("auth")
 @RestController
-class AuthController {
+class AuthController(
+	private val authService: AuthService
+) {
 }

@@ -1,6 +1,6 @@
 package com.yyjy.memo.repository
 
-import com.yyjy.memo.models.Posts
+import com.yyjy.memo.models.entity.Posts
 import org.babyfish.jimmer.spring.repository.KRepository
 
 interface PostRepository : KRepository<Posts, Long> {

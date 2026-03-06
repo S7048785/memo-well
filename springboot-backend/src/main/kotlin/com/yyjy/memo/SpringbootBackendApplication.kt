@@ -1,11 +1,11 @@
 package com.yyjy.memo
 
-import com.yyjy.memo.common.ExcludePathProperties
+import com.yyjy.memo.common.MemoProperties
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.context.properties.EnableConfigurationProperties
 import org.springframework.boot.runApplication
 
-@EnableConfigurationProperties(ExcludePathProperties::class)
+@EnableConfigurationProperties(MemoProperties::class)
 @SpringBootApplication
 class SpringbootBackendApplication
 

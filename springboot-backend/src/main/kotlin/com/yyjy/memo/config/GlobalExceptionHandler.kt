@@ -1,7 +1,7 @@
 package com.yyjy.memo.config
 
-import com.yyjy.common.ApiRes
-import com.yyjy.common.BusinessException
+import com.yyjy.memo.common.BusinessException
+import com.yyjy.memo.common.R
 import io.swagger.v3.oas.annotations.Hidden
 import org.springframework.web.bind.annotation.ExceptionHandler
 import org.springframework.web.bind.annotation.RestControllerAdvice
@@ -16,8 +16,8 @@ import org.springframework.web.bind.annotation.RestControllerAdvice
 class GlobalExceptionHandler {
 
     @ExceptionHandler
-    fun handleBusinessException(ex: BusinessException): ApiRes<String?> {
-        return ApiRes.fail( ex.message ?: "未知错误")
+    fun handleBusinessException(ex: BusinessException): R<String?> {
+        return R.fail( ex.message ?: "未知错误")
     }
 
 //    @ExceptionHandler

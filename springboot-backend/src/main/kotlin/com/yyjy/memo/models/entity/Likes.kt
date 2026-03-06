@@ -1,4 +1,4 @@
-package com.yyjy.memo.models
+package com.yyjy.memo.models.entity
 
 import org.babyfish.jimmer.sql.Entity
 import org.babyfish.jimmer.sql.Id

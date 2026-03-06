@@ -1,5 +1,6 @@
 package com.yyjy.memo.config
 
+import com.yyjy.memo.common.MemoProperties
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
 import org.springframework.web.servlet.config.annotation.CorsRegistry
@@ -11,14 +12,16 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer
  * @description: TODO
  */
 @Configuration
-class GlobalCorsConfig {
+class GlobalCorsConfig(
+    private val properties: MemoProperties
+) {
 
     @Bean
     fun corsConfigurer(): WebMvcConfigurer {
         return object: WebMvcConfigurer {
             override fun addCorsMappings(regisitry: CorsRegistry) {
                 regisitry.addMapping("/**")
-                    .allowedOrigins("http://localhost:3000")
+                    .allowedOrigins(*(properties.front.ip.toTypedArray()))
                     .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS")
                     .allowedHeaders("*")
                     .allowCredentials(true)

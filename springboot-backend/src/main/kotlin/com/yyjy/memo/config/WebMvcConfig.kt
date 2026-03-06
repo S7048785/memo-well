@@ -1,7 +1,7 @@
 package com.yyjy.memo.config
 
 import cn.dev33.satoken.interceptor.SaInterceptor
-import com.yyjy.common.ExcludePathProperties
+import com.yyjy.memo.common.MemoProperties
 import org.springframework.context.annotation.Configuration
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry
@@ -10,14 +10,14 @@ import java.io.File
 
 @Configuration
 class WebMvcConfig(
-    private val excludePathProperties: ExcludePathProperties
+    private val properties: MemoProperties
 ) : WebMvcConfigurer {
 
     override fun addInterceptors(registry: InterceptorRegistry) {
         registry.addInterceptor(SaInterceptor()) // 拦截所有路径
             .addPathPatterns("/**")
             .excludePathPatterns(
-                excludePathProperties.paths
+                properties.exclude.path,
             )
             .excludePathPatterns( // Swagger相关路径
                 "/doc.html",

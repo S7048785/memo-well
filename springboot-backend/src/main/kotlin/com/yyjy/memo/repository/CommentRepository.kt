@@ -1,6 +1,6 @@
 package com.yyjy.memo.repository
 
-import com.yyjy.memo.models.Comments
+import com.yyjy.memo.models.entity.Comments
 import org.babyfish.jimmer.spring.repository.KRepository
 
 interface CommentRepository : KRepository<Comments, Long> {
