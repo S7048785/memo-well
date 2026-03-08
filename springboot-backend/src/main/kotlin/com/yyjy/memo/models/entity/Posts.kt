@@ -1,13 +1,6 @@
 package com.yyjy.memo.models.entity
 
-import org.babyfish.jimmer.sql.Column
-import org.babyfish.jimmer.sql.Entity
-import org.babyfish.jimmer.sql.Id
-import org.babyfish.jimmer.sql.GeneratedValue
-import org.babyfish.jimmer.sql.Key
-import org.babyfish.jimmer.sql.GenerationType
-import org.babyfish.jimmer.sql.JoinColumn
-import org.babyfish.jimmer.sql.ManyToOne
+import org.babyfish.jimmer.sql.*
 import java.time.LocalDateTime
 
 /**
@@ -42,7 +35,7 @@ interface Posts {
      * 1:便签(文字), 2:照片
      */
     @Key
-    val type: Int?
+    val type: Int
 
     /**
      * 文字内容
@@ -59,6 +52,8 @@ interface Posts {
      */
     val cardColor: String?
 
+    val likeCount: Long?
+
     /**
      * 浏览量
      */
@@ -67,7 +62,7 @@ interface Posts {
     /**
      * 是否置顶
      */
-    @Column(name = "isTop")
+    @Column(name = "is_top")
     val pinned: Int?
 
     val createdAt: LocalDateTime?

@@ -1,0 +1,42 @@
+export com.yyjy.memo.models.entity.Users
+ -> package com.yyjy.memo.models.entity.dto
+
+import io.swagger.v3.oas.annotations.media.Schema
+import jakarta.validation.constraints.EmailNotBlank
+import jakarta.validation.constraints.Email
+import jakarta.validation.constraints.NotBlank
+
+input UserLoginReq {
+    @Email(message = "邮箱格式不正确")
+    @Schema(description = "邮箱")
+    email
+
+    @NotBlank(message = "密码不能为空")
+    @Schema(description = "密码")
+    password
+}
+
+input UserRegisterInput {
+    @Email(message = "邮箱格式不正确")
+    @Schema(description = "邮箱")
+    email
+
+    @NotBlank(message = "密码不能为空")
+    @Schema(description = "密码")
+    password
+
+    @NotBlank(message = "用户名不能为空")
+    @Schema(description = "用户名")
+    username
+}
+input UserRegisterReq {
+    @Email(message = "邮箱格式不正确")
+    @Schema(description = "邮箱")
+    email
+    @NotBlank(message = "用户名不能为空")
+    @Schema(description = "用户名")
+    username
+    avatar
+    bio
+    gender
+}

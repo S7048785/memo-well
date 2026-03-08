@@ -15,6 +15,8 @@ interface Users {
     )
     val id: Long
 
+    val email: String
+
     /**
      * 用户名
      */
@@ -30,6 +32,10 @@ interface Users {
      * 头像URL
      */
     val avatar: String?
+
+    val bio: String?
+
+    val gender: Int
 
     val createdAt: LocalDateTime?
 

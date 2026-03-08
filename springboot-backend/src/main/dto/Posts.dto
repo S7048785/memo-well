@@ -1,0 +1,7 @@
+export com.yyjy.memo.models.entity.Posts
+ -> package com.yyjy.memo.models.entity.dto
+
+input NoteQueryReq {
+
+}
+
