@@ -27,9 +27,11 @@ interface Posts {
      * 分类ID
      */
     @Key
-    @JoinColumn(name = "")
     @ManyToOne
-    val category: Categories
+    val category: Categories?
+
+    @IdView
+    val categoryId: Long?
 
     /**
      * 1:便签(文字), 2:照片
@@ -55,9 +57,9 @@ interface Posts {
     val likeCount: Long?
 
     /**
-     * 浏览量
+     * 评论量
      */
-    val viewCount: Long?
+    val commentCount: Long?
 
     /**
      * 是否置顶

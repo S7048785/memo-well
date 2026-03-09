@@ -12,7 +12,7 @@ interface Categories {
     @GeneratedValue(
         strategy = GenerationType.IDENTITY
     )
-    val id: Int
+    val id: Long
 
 
     /**
@@ -20,11 +20,6 @@ interface Categories {
      */
     @Key
     val name: String
-
-    /**
-     * 分类代表色
-     */
-    val color: String?
 
     /**
      * 排序权重

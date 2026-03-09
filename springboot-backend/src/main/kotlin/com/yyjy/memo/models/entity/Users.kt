@@ -35,7 +35,7 @@ interface Users {
 
     val bio: String?
 
-    val gender: Int
+    val gender: Int?
 
     val createdAt: LocalDateTime?
 
