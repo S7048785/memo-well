@@ -1,7 +1,22 @@
 export com.yyjy.memo.models.entity.Posts
  -> package com.yyjy.memo.models.entity.dto
 
-input NoteQueryReq {
+import io.swagger.v3.oas.annotations.media.Schema
+import jakarta.validation.constraints.NotBlank
+import jakarta.validation.constraints.NotNull
 
+
+input NoteCreateInput {
+    @NotNull(message = "分类不能为null")
+    categoryId
+    @NotBlank(message = "内容不能为空")
+    content
+    @NotBlank(message = "颜色不能为空")
+    cardColor
+}
+input PhotoCreateInput {
+    @NotNull(message = "图片url不能为null")
+    imageUrl
+    content
 }
 

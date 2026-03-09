@@ -1,0 +1,13 @@
+export com.yyjy.memo.models.entity.Comments
+ -> package com.yyjy.memo.models.entity.dto
+
+input CommentsCreateInput {
+    post {
+        id
+    }
+    parent {
+        id
+    }
+    content
+}
+

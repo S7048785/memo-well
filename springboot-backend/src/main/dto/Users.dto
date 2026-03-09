@@ -16,19 +16,6 @@ input UserLoginReq {
     password
 }
 
-input UserRegisterInput {
-    @Email(message = "邮箱格式不正确")
-    @Schema(description = "邮箱")
-    email
-
-    @NotBlank(message = "密码不能为空")
-    @Schema(description = "密码")
-    password
-
-    @NotBlank(message = "用户名不能为空")
-    @Schema(description = "用户名")
-    username
-}
 input UserRegisterReq {
     @Email(message = "邮箱格式不正确")
     @Schema(description = "邮箱")
@@ -40,3 +27,12 @@ input UserRegisterReq {
     bio
     gender
 }
+UserLoginRes {
+    id
+    email
+    username
+    avatar
+    bio
+    gender
+}
+
