@@ -26,16 +26,16 @@ class UserController(
 ) {
 
 	@Api
-	@Operation(description = "用户登录")
+	@Operation(summary = "用户登录")
 	@PostMapping("/login")
 	fun login(@Validated @RequestBody userLogin: UserLoginReq): R<UserLoginRes> {
 		val user = userService.login(userLogin.email, userLogin.password)
 		StpUtil.login(user.id)
-		return R.ok(user)
+		return R.ok(UserLoginRes(user))
 	}
 
 	@Api
-	@Operation(description = "用户注册")
+	@Operation(summary = "用户注册")
 	@PostMapping("/register")
 	fun register(@Validated @RequestBody userRegister: UserRegisterReq): R<String?> {
 		userService.register(userRegister)
@@ -44,7 +44,7 @@ class UserController(
 
 	@Api
 	@SaCheckLogin
-	@Operation(description = "获取当前用户信息")
+	@Operation(summary = "获取当前用户信息")
 	@GetMapping("/me")
 	fun get(): R<@FetchBy("USER_LOGIN") Users> {
 		val userId = StpUtil.getLoginIdAsLong()

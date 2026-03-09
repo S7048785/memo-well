@@ -1,5 +1,12 @@
 package com.yyjy.memo.controller
 
+import cn.dev33.satoken.annotation.SaCheckLogin
+import cn.dev33.satoken.stp.StpUtil
+import com.yyjy.memo.common.R
+import com.yyjy.memo.models.entity.dto.CommentsCreateInput
+import com.yyjy.memo.service.CategoryService
+import com.yyjy.memo.service.CommentService
+import com.yyjy.memo.service.PostService
 import io.swagger.v3.oas.annotations.Operation
 import io.swagger.v3.oas.annotations.tags.Tag
 import org.babyfish.jimmer.client.meta.Api
@@ -9,24 +16,32 @@ import org.springframework.web.bind.annotation.*
 @Tag(name = "评论模块")
 @RequestMapping("social")
 @RestController
-class SocialController {
+class SocialController(
+	private val commentService: CommentService,
+	private val categoryService: CategoryService,
+	private val postService: PostService
+) {
 
 	@Api
-	@Operation(description = "点赞/取消")
+	@SaCheckLogin
+	@Operation(summary = "点赞/取消")
 	@PostMapping("/like")
-	fun like() {
-		TODO()
+	fun like(postId: Long): R<Boolean> {
+		val isLiked = postService.like(postId)
+		return R.ok(isLiked)
 	}
 
 	@Api
-	@Operation(description = "发表评论")
+	@SaCheckLogin
+	@Operation(summary = "发表评论")
 	@PostMapping("/comment")
-	fun postComment() {
-		TODO()
+	fun postComment(@RequestBody comment: CommentsCreateInput): R<String?> {
+		commentService.create(comment)
+		return R.ok()
 	}
 
 	@Api
-	@Operation(description = "获取评论")
+	@Operation(summary = "获取评论")
 	@GetMapping("/comment/{post_id}")
 	fun getCommentList(@PathVariable("post_id") postId: Long, page: Int, limit: Int) {
 		TODO()

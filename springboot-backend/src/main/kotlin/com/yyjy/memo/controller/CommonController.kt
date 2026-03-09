@@ -22,14 +22,13 @@ class CommonController(
 ) {
 
 	@Api
-	@Operation(description = "获取所以分类")
+	@Operation(summary = "获取所以分类")
 	@GetMapping("/categories")
 	fun categoryList(): R<List<@FetchBy("CATEGORY_ITEM") Categories>> = R.ok(categoryService.list(CATEGORY_ITEM))
 
 	companion object {
 		val CATEGORY_ITEM = newFetcher(Categories::class).by {
 			name()
-			color()
 		}
 	}
 }
