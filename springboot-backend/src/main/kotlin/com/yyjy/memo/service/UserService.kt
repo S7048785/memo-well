@@ -2,10 +2,10 @@ package com.yyjy.memo.service
 
 import com.yyjy.memo.common.BusinessException
 import com.yyjy.memo.models.entity.Users
-import com.yyjy.memo.models.entity.dto.UserLoginRes
 import com.yyjy.memo.models.entity.dto.UserRegisterReq
 import com.yyjy.memo.models.entity.id
 import com.yyjy.memo.repository.UserRepository
+import org.babyfish.jimmer.sql.ast.mutation.SaveMode
 import org.babyfish.jimmer.sql.fetcher.Fetcher
 import org.babyfish.jimmer.sql.kt.ast.expression.eq
 import org.springframework.stereotype.Service
@@ -15,10 +15,9 @@ class UserService(
 	private val userRepository: UserRepository
 ) {
 
-	fun login(email: String, password: String): UserLoginRes {
+	fun login(email: String, password: String): Users {
 		return userRepository.findUsersByEmail(email).firstOrNull()
-			?.takeIf { it.password == password } // 如果密码匹配则返回对象，否则返回 null
-			?.let { UserLoginRes(it) }
+			?.takeIf { it.password == password }
 			?: throw BusinessException("邮箱或密码不正确") // 统一错误提示，增加安全性
 	}
 
@@ -30,6 +29,7 @@ class UserService(
 				user.username == userRegister.username -> throw BusinessException("用户名已存在")
 			}
 		}
+		userRepository.save(userRegister,SaveMode.INSERT_ONLY)
 	}
 
 	fun getById(userId: Long, USER_LOGIN: Fetcher<Users>): Users = userRepository.sql.createQuery(Users::class) {
