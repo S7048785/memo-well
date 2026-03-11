@@ -28,7 +28,7 @@ class PostController(
 	@Api
 	@Operation(summary = "分页获取帖子列表")
 	@GetMapping("/")
-	fun getNoteList(limit: Int, size: Int, categoryId: Long?): PageRes<@FetchBy("POST_ITEM") Posts> {
+	fun getNoteList(limit: Int, size: Int,@RequestParam("categoryId") categoryId: Long?): PageRes<@FetchBy("POST_ITEM") Posts> {
 		val page = postService.notePage(limit, size, categoryId, POST_ITEM)
 		return PageRes(page.totalRowCount, limit, size, page.rows)
 	}
