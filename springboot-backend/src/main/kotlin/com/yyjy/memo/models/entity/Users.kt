@@ -37,6 +37,8 @@ interface Users {
 
     val gender: Int?
 
+    val role: String?
+
     val createdAt: LocalDateTime?
 
     val updatedAt: LocalDateTime?

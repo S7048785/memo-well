@@ -32,9 +32,11 @@ class UserService(
 		userRepository.save(userRegister,SaveMode.INSERT_ONLY)
 	}
 
-	fun getById(userId: Long, USER_LOGIN: Fetcher<Users>): Users = userRepository.sql.createQuery(Users::class) {
+	fun getById(userId: Long, USER_LOGIN: Fetcher<Users>?): Users = userRepository.sql.createQuery(Users::class) {
 		where(table.id eq userId)
-		select(table.fetch(USER_LOGIN))
+		select(if (USER_LOGIN != null) table.fetch(USER_LOGIN) else table)
 	}.fetchFirstOrNull() ?: throw BusinessException("用户不存在")
+
+
 
 }
