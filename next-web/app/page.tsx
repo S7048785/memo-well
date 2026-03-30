@@ -1,74 +1,23 @@
-import { Link } from "@heroui/link";
-import { Snippet } from "@heroui/snippet";
-import { Code } from "@heroui/code";
-import { button as buttonStyles } from "@heroui/theme";
+import { RadixDialogDemo } from "@/components/demo-components-radix-dialog"
+import { RadixSidebarDemo } from "@/components/demo-components-radix-sidebar"
+import { Button } from "@/components/ui/button"
 
-import { siteConfig } from "@/config/site";
-import { title, subtitle } from "@/components/primitives";
-import { GithubIcon } from "@/components/icons";
-import {Button} from "@heroui/button";
-
-export default function Home() {
+export default function Page() {
   return (
-    <section className="flex flex-col items-center justify-center gap-4 py-8 md:py-10">
-      <div className="inline-block max-w-xl text-center justify-center">
-        <span className={title()}>Make&nbsp;</span>
-        <span className={title({ color: "violet" })}>beautiful&nbsp;</span>
-        <br />
-        <span className={title()}>
-          websites regardless of your design experience.
-        </span>
-        <div className={subtitle({ class: "mt-4" })}>
-          Beautiful, fast and modern React UI library.
+    <div className="flex min-h-svh p-6">
+      {/* <div className="flex max-w-md min-w-0 flex-col gap-4 text-sm leading-loose">
+        <div>
+          <h1 className="font-medium">Project ready!</h1>
+          <p>You may now add components and start building.</p>
+          <p>We&apos;ve already added the button component for you.</p>
+          <Button className="mt-2">Button</Button>
         </div>
-      </div>
-
-      <div className="flex gap-3">
-        <Link
-          isExternal
-          className={buttonStyles({
-            color: "primary",
-            radius: "full",
-            variant: "shadow",
-          })}
-          href={siteConfig.links.docs}
-        >
-          Documentation
-        </Link>
-        <Link
-          isExternal
-          className={buttonStyles({ variant: "bordered", radius: "full" })}
-          href={siteConfig.links.github}
-        >
-          <GithubIcon size={20} />
-          GitHub
-        </Link>
-      </div>
-
-      <div className="mt-8">
-        <Snippet hideCopyButton hideSymbol variant="bordered">
-          <span>
-            Get started by editing <Code color="primary">app/page.tsx</Code>
-          </span>
-        </Snippet>
-      </div>
-
-      <div className="mt-8"><Button color="primary">Button</Button></div>
-      <div className="bg-primary text-primary-foreground p-4">
-        如果这个背景是橙色的，说明配置成功了
-      </div>
-      <div className="flex gap-4">
-        <Button color="primary" variant="solid">Solid</Button>
-        <Button color="primary" variant="ghost">Ghost</Button>
-      </div>
-      <div className="flex gap-4">
-        <Button variant="bordered" radius="md">
-          Button
-        </Button>
-        <Button isDisabled color="primary" radius="md">
-          Disabled
-        </Button>
-      </div>
-    </section>
-  );
+        <div className="font-mono text-xs text-muted-foreground">
+          (Press <kbd>d</kbd> to toggle dark mode)
+        </div>
+        <RadixDialogDemo />
+      </div> */}
+      <RadixSidebarDemo />
+    </div>
+  )
 }
